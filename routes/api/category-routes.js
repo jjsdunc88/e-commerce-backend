@@ -10,9 +10,6 @@ router.get('/', (req, res) => {
     include: [Product]
   })
     .then(data => {
-      console.log("Data: ", data);
-      console.log("Type: ", typeof data);
-
       res.status(200).json(data);
     })
     .catch(error => {
@@ -25,9 +22,10 @@ router.get('/', (req, res) => {
     // we want to capture the ID value
     console.log("Request Object: ", req)
     console.log("Request Parameters Obj: ", req.params);
-    // find one category by its `id` value
+    // find one category by its `id` value, include associated Products
     Category.findOne({ 
-      where: { id: req.params.id }
+      where: { id: req.params.id },
+      include: [Product]
     })
     .then(data => {
       console.log("Data: ", data);
@@ -38,8 +36,8 @@ router.get('/', (req, res) => {
     .catch(error => {
       res.status(500).json({ msg: error })
     })
-  // be sure to include its associated Products
-  // res.send("Hit Single Category Route");
+  
+  
 });
 
 router.post('/', (req, res) => {

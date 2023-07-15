@@ -43,10 +43,14 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
   console.log("Req Body Data: ", req.body);
   console.log("Type: ", req.body);
-  // create a new category
+  Category.create(req.body)
 
-  res.send("recieved Data");
-});
+  .then((data) =>  res.json(data) )
+
+  });
+
+  // res.send("recieved Data");
+
 
 router.put('/:id', (req, res) => {
   // update a category by its `id` value

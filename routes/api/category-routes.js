@@ -3,9 +3,8 @@ const { Category, Product } = require('../../models');
 
 // The `/api/categories` endpoint
 
-//get all categories
+//get all categories, include associated Products
 router.get('/', (req, res) => {
-  // find all categories, include associated Products
   Category.findAll({
     include: [Product]
   })
@@ -15,56 +14,59 @@ router.get('/', (req, res) => {
     .catch(error => {
       res.status(500).json({ msg: error })
     })
-    
-  });
-  
-  router.get('/:id', (req, res) => {
-    // we want to capture the ID value
-    console.log("Request Object: ", req)
-    console.log("Request Parameters Obj: ", req.params);
-    // find one category by its `id` value, include associated Products
-    Category.findOne({ 
-      where: { id: req.params.id },
-      include: [Product]
-    })
+});
+
+// find one category by its `id` value, include associated Products
+router.get('/:id', (req, res) => {
+  Category.findOne({
+    where: { id: req.params.id },
+    include: [Product]
+  })
     .then(data => {
       console.log("Data: ", data);
       console.log("Type: ", typeof data);
-  
+
       res.status(200).json(data);
     })
     .catch(error => {
       res.status(500).json({ msg: error })
     })
-  
-  
 });
 
+
+// create a new category
 router.post('/', (req, res) => {
   console.log("Req Body Data: ", req.body);
   console.log("Type: ", req.body);
   Category.create(req.body)
 
-  .then((data) =>  res.json(data) )
-
-  });
-
-  // res.send("recieved Data");
+    .then((data) => res.json(data))
+});
 
 
+
+// update a category by its `id` value
 router.put('/:id', (req, res) => {
   Category.update(req.body, {
     where: { id: req.params.id },
   })
-  .then((data) =>  res.json(data) )
+    .then((data) => res.json(data))
 
 });
 
+
+// delete a category by its `id` value
 router.delete('/:id', (req, res) => {
-  Category.destroy(req.body, {
-    where: { id: req.params.id },
+  Category.destroy({
+    where: {
+      id: req.params.id,
+    },
+  },).then(data => {
+    res.status(200).json(data);
+  }).catch(err => {
+    res.status(500).json(err);
   })
-  .then((data) =>  res.json(data) )
 });
+
 
 module.exports = router;

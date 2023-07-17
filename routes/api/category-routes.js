@@ -23,9 +23,6 @@ router.get('/:id', (req, res) => {
     include: [Product]
   })
     .then(data => {
-      console.log("Data: ", data);
-      console.log("Type: ", typeof data);
-
       res.status(200).json(data);
     })
     .catch(error => {
@@ -36,11 +33,10 @@ router.get('/:id', (req, res) => {
 
 // create a new category
 router.post('/', (req, res) => {
-  console.log("Req Body Data: ", req.body);
-  console.log("Type: ", req.body);
   Category.create(req.body)
 
     .then((data) => res.json(data))
+    
 });
 
 
@@ -67,6 +63,10 @@ router.delete('/:id', (req, res) => {
     res.status(500).json(err);
   })
 });
+
+
+
+
 
 
 module.exports = router;

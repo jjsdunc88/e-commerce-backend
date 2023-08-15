@@ -32,12 +32,13 @@
 
   
 
-  [Please click here if video does not display](https://drive.google.com/file/d/1cc3HRb9IGaoNyCew2v-f-x-2UL3yA1cb/view)
+  [Please click here if video does not display](https://drive.google.com/file/d/15p_Qc07eOElzrY7KyYlSOX6WCcULQltf/view?usp=sharing)
   
  
 
 
-  [Untitled_ Jun 20, 2023 9_35 PM.webm](https://github.com/jjsdunc88/e-commerce-backend/assets/125617546/5937545a-137c-4074-9f27-9ef8b491045a)
+  [Untitled_ Aug 14, 2023 10_19 PM.webm](https://github.com/jjsdunc88/e-commerce-backend/assets/125617546/ef337ca0-48e9-49e0-b03d-b8265ec3aaad)
+
 
 
 
